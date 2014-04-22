@@ -22,13 +22,16 @@ def train_ride():
     print "Would you like to ride the train?"
 
     answer = raw_input("> ")
-    while answer.lower() == "yes":
-        print "You board the train. It is a pleasent, relaxing ride."
-        print "You exit the train. Would you like to ride again?"
+    if answer.lower() == "no":
+        quit_game("Well fine then.")
+    else:
+        while answer.lower() == "yes":
+            print "You board the train. It is a pleasent, relaxing ride."
+            print "You exit the train. Would you like to ride again?"
 
-        answer = raw_input("> ")
-    print "You arrive at your destination."
-    exit(0)
+            answer = raw_input("> ")
+        print "You arrive at your destination."
+        exit(0)
 
 
 start()
