@@ -1,50 +1,34 @@
-###"""TRAIN ADVENTURES!"""###
-insult = "Your mother was a hamster and your father smelt of elderberries"
-train_ride = """
-You board the train.
-You ride the train.
-You exit the train."""
-again = "Want to ride the train again?!? "
+from sys import exit
 
-print("Hello and welcome to my game.")
-trainQ = raw_input("Do you like trains? ")
-while trainQ.lower() != "yes" and trainQ.lower() != "no":
-    print("Please answer either Yes or No.")
-    trainQ = raw_input("Do you like trains? ")
-if trainQ.lower() == "yes":
-    ride_train = raw_input("Would you like to ride the train? ")
-    if ride_train.lower() == "yes":
-        print(train_ride)
-        ride_again = raw_input(again)
-        rides = 0
-        while ride_again.lower() == "yes":
-            if rides == 0:
-                print ("""
-			Thankfully, the train you boarded
-			this time was very well maintained.
-			You take a seat near the window
-			and gaze lovingly outside at the entrancing
-			sight of the city zipping by you.
-			The silence of the train is calming
-			as it takes you to your exit.""")
-                ride_again = raw_input(again)
-                rides += 1
-            if rides == 1:
-                print ("SWAG OVERLOAD!")
-                ride_again = raw_input(again)
-                rides += 1
-            if rides == 2:
-                print ("DO A BARREL ROLL!")
-                ride_again = raw_input(again)
-                rides += 1
-            if rides == 3:
-                print ("WHY ARE YOU STILL RIDING THE TRAIN?!")
-                ride_again = raw_input(again)
-                rides += 1
-        print("Well fine then.\nFuck you too.\nJerk.")
+def start():
+    print "Hello and welcome to my game."
+    print "Do you like trains?"
+
+    answer = raw_input("> ")
+
+    if answer.lower() == "yes":
+        train_ride()
+    elif answer.lower() == "no":
+        quit_game("Well fine then.")
     else:
-        print(insult)
-elif trainQ.lower() == "no":
-    print("Well fine then. Fuck you too. Jerk.")
-print("Thanks for playing")
+        print "Please answer either Yes or No."
+        start()
 
+def quit_game(reason):
+    print reason, "You died."
+    exit(0)
+
+def train_ride():
+    print "Would you like to ride the train?"
+
+    answer = raw_input("> ")
+    while answer.lower() == "yes":
+        print "You board the train. It is a pleasent, relaxing ride."
+        print "You exit the train. Would you like to ride again?"
+
+        answer = raw_input("> ")
+    print "You arrive at your destination."
+    exit(0)
+
+
+start()
